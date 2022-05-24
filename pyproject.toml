@@ -31,13 +31,13 @@ client = 'pyproject:main'
 [tool.poetry.dependencies]
 python = "^3.8"
 requests = "^2.27.1"
-Sphinx = { version = "^4.4", optional = true }
+Sphinx = { version = "^4.5.0", optional = true }
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.931"
-types-requests = "^2.27.7"
-ipython = "^8.0.1"
-pytest = "^6.2.5"
+mypy = "^0.950"
+types-requests = "^2.27.27"
+ipython = "^8.3.0"
+pytest = "^7.1.2"
 
 [tool.poetry.extras]
 docs = ["Sphinx"]
