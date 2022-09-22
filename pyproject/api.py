@@ -25,7 +25,10 @@ class PyProject():
     @property
     def is_up(self) -> bool:
         '''Test if the given instance is accessible'''
-        r = self.session.head(self.root_url)
+        try:
+            r = self.session.head(self.root_url)
+        except requests.exceptions.ConnectionError:
+            return False
         return r.status_code == 200
 
     def redis_up(self) -> Dict:
