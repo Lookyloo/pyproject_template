@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from typing import Dict
+from importlib.metadata import version
+from typing import Dict, Optional
 from urllib.parse import urljoin, urlparse
 
 import requests
@@ -9,7 +10,7 @@ import requests
 
 class PyProject():
 
-    def __init__(self, root_url: str):
+    def __init__(self, root_url: str, useragent: Optional[str]=None):
         '''Query a specific instance.
 
         :param root_url: URL of the instance to query.
@@ -21,6 +22,7 @@ class PyProject():
         if not self.root_url.endswith('/'):
             self.root_url += '/'
         self.session = requests.session()
+        self.session.headers['user-agent'] = useragent if useragent else f'PyProject / {version("pyproject")}'
 
     @property
     def is_up(self) -> bool:
