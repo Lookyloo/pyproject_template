@@ -10,10 +10,13 @@ import requests
 
 class PyProject():
 
-    def __init__(self, root_url: str, useragent: Optional[str]=None):
+    def __init__(self, root_url: str, useragent: Optional[str]=None,
+                 *, proxies: Optional[Dict[str, str]]=None):
         '''Query a specific instance.
 
         :param root_url: URL of the instance to query.
+        :param useragent: The User Agent used by requests to run the HTTP requests against the instance.
+        :param proxies: The proxies to use to connect to theinstance - More details: https://requests.readthedocs.io/en/latest/user/advanced/#proxies
         '''
         self.root_url = root_url
 
@@ -23,6 +26,8 @@ class PyProject():
             self.root_url += '/'
         self.session = requests.session()
         self.session.headers['user-agent'] = useragent if useragent else f'PyProject / {version("pyproject")}'
+        if proxies:
+            self.session.proxies.update(proxies)
 
     @property
     def is_up(self) -> bool:
