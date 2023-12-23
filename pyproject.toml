@@ -16,10 +16,9 @@ classifiers = [
     'Intended Audience :: Telecommunications Industry',
     'Intended Audience :: Information Technology',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Topic :: Security',
     'Topic :: Internet',
 ]
@@ -36,10 +35,10 @@ Sphinx = { version = "^7.2.6", optional = true }
 docs = ["Sphinx"]
 
 [tool.poetry.group.dev.dependencies]
-pylint = "^3.0.2"
-mypy = "^1.7.1"
+pylint = "^3.0.3"
+mypy = "^1.8.0"
 types-requests = "^2.31.0.10"
-ipython = "^8.18.1"
+ipython = "^8.19.0"
 pytest = "^7.4.3"
 
 [build-system]
