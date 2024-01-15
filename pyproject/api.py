@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+
+from __future__ import annotations
 
 from importlib.metadata import version
-from typing import Dict, Optional
+from typing import Any
 from urllib.parse import urljoin, urlparse
 
 import requests
@@ -10,8 +11,8 @@ import requests
 
 class PyProject():
 
-    def __init__(self, root_url: str, useragent: Optional[str]=None,
-                 *, proxies: Optional[Dict[str, str]]=None):
+    def __init__(self, root_url: str, useragent: str | None=None,
+                 *, proxies: dict[str, str] | None=None):
         '''Query a specific instance.
 
         :param root_url: URL of the instance to query.
@@ -38,7 +39,7 @@ class PyProject():
             return False
         return r.status_code == 200
 
-    def redis_up(self) -> Dict:
+    def redis_up(self) -> dict[str, Any]:
         '''Check if redis is up and running'''
         r = self.session.get(urljoin(self.root_url, 'redis_up'))
         return r.json()

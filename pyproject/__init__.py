@@ -1,11 +1,15 @@
+from __future__ import annotations
+
 import argparse
 import json
 import sys
 
 from .api import PyProject
 
+__all__ = ['PyProject']
 
-def main():
+
+def main() -> None:
     parser = argparse.ArgumentParser(description='Query a thing.')
     parser.add_argument('--url', type=str, required=True, help='URL of the instance.')
     group = parser.add_mutually_exclusive_group(required=True)
