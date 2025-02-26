@@ -40,5 +40,5 @@ types-requests = "^2.32.0.20241016"
 pytest = "^8.3.4"
 
 [build-system]
-requires = ["poetry-core>-2.0"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
