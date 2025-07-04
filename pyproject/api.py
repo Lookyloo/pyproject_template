@@ -12,12 +12,13 @@ import requests
 class PyProject():
 
     def __init__(self, root_url: str, useragent: str | None=None,
-                 *, proxies: dict[str, str] | None=None):
+                 *, proxies: dict[str, str] | None=None, verify: bool=True) -> None:
         '''Query a specific instance.
 
         :param root_url: URL of the instance to query.
         :param useragent: The User Agent used by requests to run the HTTP requests against the instance.
-        :param proxies: The proxies to use to connect to theinstance - More details: https://requests.readthedocs.io/en/latest/user/advanced/#proxies
+        :param proxies: The proxies to use to connect to the instance - More details: https://requests.readthedocs.io/en/latest/user/advanced/#proxies
+        :param verify: Whether to verify the SSL certificate of the instance.
         '''
         self.root_url = root_url
 
@@ -29,6 +30,7 @@ class PyProject():
         self.session.headers['user-agent'] = useragent if useragent else f'PyProject / {version("pyproject")}'
         if proxies:
             self.session.proxies.update(proxies)
+        self.session.verify = verify
 
     @property
     def is_up(self) -> bool:
